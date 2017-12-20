@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import Listview from './Components/Listview';
 
-AppRegistry.registerComponent('memorize_app', () => App);
+AppRegistry.registerComponent('memorize_app', () => Listview);
