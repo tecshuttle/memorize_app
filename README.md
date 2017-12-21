@@ -1,14 +1,15 @@
 # memorize_app
-使用React Native开发的“别忘记”APP。
+
+使用React Native开发的"别忘记"APP。
 
 ## 安装
 
-1. git clone https://github.com/tecshuttle/memorize_app.git
-1. cd memorize_app
-1. npm install
-1. emulator -avd Nexus_5X_API_26
-1. react-native run-android
-1. DONE
+1. git clone <https://github.com/tecshuttle/memorize_app.git>
+2. cd memorize_app
+3. npm install
+4. emulator -avd Nexus_5X_API_26
+5. react-native run-android
+6. DONE
 
 ## 打包发布
 
