@@ -2,10 +2,8 @@ import {AppRegistry} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Login from './Components/Login';
 import Register from './Components/Register';
-import Home from './Components/Home';
-import Tab1 from './Components/Tab1';
-import Tab2 from './Components/Tab2';
-import Tab3 from './Components/Tab3';
+import Home from './Components/Tab_0_Home';
+import MemoAdd from './Components/Tab_1_Memo_add';
 
 const App = StackNavigator({
   Login: {
@@ -17,7 +15,10 @@ const App = StackNavigator({
   },
   Home: {
     screen: Home
-  }
+  },
+  MemoAdd: {
+    screen: MemoAdd
+  },
 });
 
 //用户登录信息

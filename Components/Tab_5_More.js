@@ -22,7 +22,7 @@ import {
   Switch
 } from 'native-base';
 
-export default class Tab3 extends Component {
+export default class More extends Component {
   constructor(props) {
     super(props);
     this.state = {};

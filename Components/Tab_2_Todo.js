@@ -21,23 +21,8 @@ import {
 } from 'native-base';
 import Moment from 'moment';
 
-export default class Tab2 extends Component {
-  item = <Card style={{
-      marginTop: 10,
-      marginLeft: 10,
-      marginRight: 10
-    }}>
-    <CardItem>
-      <Body>
-        <Text>参保人：谢金水</Text>
-        <Text>月份：2017年12月</Text>
-        <Text>金额：345.67元</Text>
-      </Body>
-    </CardItem>
-  </Card>;
-
-  lists = [this.item, this.item, this.item];
-
+export default class Todo extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
