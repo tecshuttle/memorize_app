@@ -31,6 +31,7 @@ export default class Memo extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      search_open: false,
       list: []
     };
 
@@ -42,13 +43,31 @@ export default class Memo extends Component {
     }).done();
   }
 
+  componentDidMount() {
+    //this.searchInput.focus();
+  }
+
   add() {
     this.props.navigation.navigate('MemoAdd');
   }
 
+  searchOpen() {
+    this.setState({search_open: true});
+    //this.searchInput.focus();
+  }
+
+  onSearchCancel() {
+    this.setState({search_open: false});
+  }
+
   render() {
+
     return (<Container>
-      <Header>
+      <Header style={this.state.search_open
+          ? {
+            display: 'none'
+          }
+          : {}}>
         <Left>
           <Button transparent={true} onPress={() => this.add()}>
             <Icon name='add'/>
@@ -58,8 +77,32 @@ export default class Memo extends Component {
           <Title>分类</Title>
         </Body>
         <Right>
-          <Button transparent={true}>
+          <Button transparent={true} onPress={() => this.searchOpen()}>
             <Icon name='ios-search'/>
+          </Button>
+        </Right>
+      </Header>
+
+      <Header searchBar={true} rounded={true} style={this.state.search_open
+          ? {}
+          : {
+            display: 'none'
+          }}>
+        <Left>
+          <Button transparent="transparent">
+            <Text>取消</Text>
+          </Button>
+        </Left>
+        <Item style={{
+            width: '100%'
+          }}>
+          <Icon name="ios-search"/>
+          <Input placeholder="Search" ref={input => this.searchInput = input} style={{width:'100%'}}/>
+          <Icon name="ios-people"/>
+        </Item>
+        <Right>
+          <Button transparent="transparent">
+            <Text>取消</Text>
           </Button>
         </Right>
       </Header>
@@ -81,6 +124,7 @@ export default class Memo extends Component {
     </Container>);
   }
 }
+
 const styles = StyleSheet.create({
   avatar: {
     flex: 1,
