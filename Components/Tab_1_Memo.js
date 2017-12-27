@@ -116,38 +116,73 @@ class Memo_ extends Component {
         </Button>
       </Header>
 
-      <Content>
+      <Content style={styles.content}>
         {
-          this.props.memoList.map((item, idx) => <Card key={'item_' + idx}>
-            <CardItem>
-              <Icon name='ios-pricetag'/>
-              <Text onPress={() => this.onMemoEdit(item)}>{item.type}</Text>
-              <Text onPress={() => this.onMemoEdit(item)}>{item.question}</Text>
-            </CardItem>
-            <CardItem >
-              <Text onPress={() => this.onMemoEdit(item)}>{item.answer}</Text>
-            </CardItem>
-          </Card>)
+          this.props.memoList.map((item, idx) => <View style={styles.item} key={'item_' + idx}>
+            <View style={styles.itemHeader}>
+              <View style={styles.tag}>
+                <Icon name='md-pricetag'/>
+                <Text style={styles.memoType}>{item.type}</Text>
+              </View>
+              <Icon name='md-create' onPress={() => this.onMemoEdit(item)}/>
+            </View>
+            <View>
+              <Text style={styles.question}>{item.question}</Text>
+              <Text style={styles.answer}>{item.answer}</Text>
+            </View>
+          </View>)
         }
+        <View style={styles.endList}>
+          <Text style={styles.endMsg}>没有更多了！</Text>
+        </View>
       </Content>
     </Container>);
   }
 }
 
 const styles = StyleSheet.create({
-  avatar: {
-    flex: 1,
+  content: {
+    backgroundColor: '#eee'
+  },
+  item: {
+    marginTop: 4,
+    marginBottom: 4
+  },
+  itemHeader: {
+    paddingTop: 10,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    justifyContent: 'space-between',
+    backgroundColor: 'white',
+    flexDirection: 'row'
+  },
+  tag: {
+    flexDirection: 'row'
+  },
+  memoType: {
+    marginLeft: 7
+  },
+  question: {
+    backgroundColor: 'white',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 5,
+    fontWeight: 'bold'
+  },
+  answer: {
+    backgroundColor: 'white',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10
+  },
+  endList: {
+    padding: 20,
     justifyContent: 'center',
-    alignItems: 'center'
+    flexDirection: 'row'
   },
-  accountInfo: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  extraInfo: {
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10
+  endMsg: {
+    color: '#aaa'
   }
 });
 

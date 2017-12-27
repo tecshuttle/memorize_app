@@ -28,7 +28,7 @@ import {
 
 class MemoAdd_ extends Component {
   static navigationOptions = {
-    //header: null
+    header: null
   };
 
   componentDidMount() {}
@@ -39,6 +39,10 @@ class MemoAdd_ extends Component {
 
   onChangeAnswer(text) {
     this.props.onChangeAnswer(text);
+  }
+
+  cancel() {
+    this.props.navigation.goBack();
   }
 
   save() {
@@ -67,17 +71,56 @@ class MemoAdd_ extends Component {
 
   render() {
     return (<Container>
-      <Button onPress={() => this.save()}>
-        <Text>保存</Text>
-      </Button>
-      <Text>{this.props.memoItem.type}</Text>
-      <Input onChangeText={text => this.onChangeQuestion(text)} value={this.props.memoItem.question}/>
-      <Input multiline={true} numberOfLines={4} onChangeText={(text) => this.onChangeAnswer(text)} value={this.props.memoItem.answer}/>
+      <Header>
+        <Left>
+          <Button onPress={() => this.cancel()}>
+            <Text>取消</Text>
+          </Button>
+        </Left>
+        <Body style={{
+            alignItems: 'center'
+          }}>
+          <Text>{this.props.memoItem.type}</Text>
+        </Body>
+        <Right>
+          <Button onPress={() => this.save()}>
+            <Text>保存</Text>
+          </Button>
+        </Right>
+      </Header>
+
+      <Content style={styles.content}>
+        <Input style={styles.inputQuestion} placeholder='标题' placeholderTextColor='#aaa' multiline={true} onChangeText={text => this.onChangeQuestion(text)} value={this.props.memoItem.question}/>
+        <Input style={styles.inputAnswer} placeholder='内容' placeholderTextColor='#aaa' multiline={true} numberOfLines={4} onChangeText={(text) => this.onChangeAnswer(text)} value={this.props.memoItem.answer}/>
+      </Content>
     </Container>);
   }
 }
 
 const styles = StyleSheet.create({
+  content: {
+    marginLeft: 5,
+    marginRight: 5
+  },
+  inputQuestion: {
+    fontWeight: 'bold',
+    borderRadius: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: 'white',
+    marginTop: 5,
+    marginBottom: 5,
+    //height: 40,
+    //paddingTop: 0,
+    //paddingBottom: 0
+  },
+  inputAnswer: {
+    backgroundColor: 'white',
+    textAlignVertical: 'top',
+    borderRadius: 5,
+    paddingLeft: 10,
+    paddingRight: 10
+  },
   avatar: {
     flex: 1,
     justifyContent: 'center',
